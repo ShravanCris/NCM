@@ -1,0 +1,276 @@
+<h1 align="center"> Concession Card</h1>
+
+<mat-grid-list cols="5" rowHeight="2:1">
+  <mat-grid-tile>
+    <mat-form-field>
+        <mat-select placeholder="Issuing Zone" [(value)]="zonelist_val">
+            <mat-option *ngFor="let zone of zoneList" item-width="30" [value]="zone.value">
+              {{ zone.viewValue }}
+            </mat-option>
+          </mat-select>
+    </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-form-field>
+      <input matInput placeholder="Issuing Station"  [(ngModel)]="issuingstation_val">
+    </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-form-field>
+      <input matInput placeholder="Card Serial No" [(ngModel)]="cards_no_val">
+    </mat-form-field>
+ </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker1" placeholder="Valid From" (dateChange)="addEvent($event)">
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker2" placeholder="Valid Till" (dateChange)="addEvent2($event)">
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+      
+     
+  </mat-grid-tile>
+  
+
+</mat-grid-list>
+
+ <h1 align="center"> Concession Card Holder Detail</h1>
+<mat-grid-list cols="7" rowHeight="2:1">
+  <mat-grid-tile>
+     <mat-form-field>
+      <input matInput placeholder="First name" [(ngModel)]="CC_First_name" maxlength="25">
+    </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-form-field>
+  <mat-select placeholder="Gender" [(value)]="CC_gender">
+    <mat-option *ngFor="let gender of genders" [value]="gender.value">
+      {{ gender.viewValue }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-form-field>
+
+        <input matInput [matDatepicker]="picker" placeholder="Date of Birth" (dateChange)="addEvent3($event)">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+
+    </mat-form-field>
+    
+ </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-form-field>
+      <input matInput placeholder="Age" [(value)]="CC_age">
+    </mat-form-field>
+
+  </mat-grid-tile>
+  <mat-grid-tile>
+<mat-form-field>
+  <mat-select placeholder="Nationality" [(value)]="cc_nationality">
+    <mat-option *ngFor="let nationality of nationalities" [value]="nationality.value">
+      {{ nationality.viewValue }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+  </mat-grid-tile>
+  <mat-grid-tile>
+<mat-form-field>
+      <input matInput placeholder="Aadhar" [(ngModel)]="cc_aadhar" maxlength="12">
+    </mat-form-field>
+
+  </mat-grid-tile>
+
+  <mat-grid-tile>
+    <mat-form-field>
+  <mat-select placeholder="Card Type"  [(value)]="selected">
+    <mat-option *ngFor="let cardtype of cardtypes" [value]="cardtype.value">
+      {{ cardtype.viewValue }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+  </mat-grid-tile>
+</mat-grid-list> 
+<br>
+<div *ngIf="(selected=='Journalist')">
+    <h1 align="center">Journalist Spouse Details</h1>
+<mat-grid-list cols=4 rowHeight="4:1">
+  <mat-grid-tile>
+      <mat-form-field>
+          <mat-select placeholder="Father/Companion">
+            <mat-option *ngFor="let companion of companions" [value]="companion.value">
+                {{ companion.viewValue }}
+              </mat-option>
+          </mat-select>
+          </mat-form-field>
+  </mat-grid-tile>
+
+<mat-grid-tile>
+    <mat-form-field>
+        <input matInput placeholder="Name" [(ngModel)]="JS_spouse_name" >
+        </mat-form-field>
+</mat-grid-tile>
+
+<mat-grid-tile>
+    <mat-form-field>
+        <mat-select placeholder="Gender" [(value)]="JS_gender">
+          <mat-option *ngFor="let gender of genders" [value]="gender.value">
+            {{ gender.viewValue }}
+          </mat-option>
+        </mat-select>
+        </mat-form-field>
+</mat-grid-tile>
+  <mat-grid-tile>
+      <mat-form-field>
+          <input matInput [matDatepicker]="picker3" placeholder="Date Of Birth" (dateChange)="addEvent4($event)">
+          <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+          <mat-datepicker #picker3></mat-datepicker>
+        </mat-form-field>
+  </mat-grid-tile>
+
+  <mat-grid-tile>
+      <mat-form-field>
+          <input matInput placeholder="Aadhar" [(ngModel)]="JS_aadhar">
+          </mat-form-field>
+  </mat-grid-tile>
+
+<mat-grid-tile>
+    <mat-form-field>
+        <input matInput placeholder="Agency" [(ngModel)]="JS_agency">
+        </mat-form-field>
+</mat-grid-tile>
+
+<mat-grid-tile>
+    <mat-form-field>
+        <input matInput placeholder="Issuing Authority" [(ngModel)]="JS_issuing_auth">
+        </mat-form-field>
+</mat-grid-tile>
+ 
+<mat-grid-tile>
+    <mat-form-field>
+        <input matInput placeholder="Designation" [(ngModel)]="JS_issuing_station">
+        </mat-form-field>
+</mat-grid-tile>
+</mat-grid-list>
+</div>
+<div *ngIf="(selected=='Handicap')">
+<h1 align="center">Handicap Details</h1>
+<mat-grid-list cols=4 rowHeight="4:1">
+  <mat-grid-tile>
+      <mat-form-field>
+          <mat-select placeholder="Father/Companion">
+            <mat-option *ngFor="let companion of companions" [value]="companion.value">
+              {{ companion.viewValue }}
+            </mat-option>
+          </mat-select>
+          </mat-form-field>
+  </mat-grid-tile>
+  
+  <mat-grid-tile>
+    <mat-form-field>
+      <input matInput placeholder="Name" [(ngModel)]="h_name">
+      </mat-form-field>
+    </mat-grid-tile>
+  
+  <mat-grid-tile>
+      <mat-form-field>
+          <mat-select placeholder="Gender" [(value)]="H_gender">
+              <mat-option *ngFor="let gender of genders" [value]="gender.value" >
+                  {{ gender.viewValue }}
+                </mat-option>
+          </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+  
+  <mat-grid-tile>
+      <mat-form-field>
+          <input matInput placeholder="Certificate Number" [(ngModel)]="H_certi_number">
+          </mat-form-field>
+  </mat-grid-tile>
+  
+  <mat-grid-tile>
+      <mat-form-field>
+          <input matInput placeholder="Address" maxlength="200" [(ngModel)]="H_address">
+          </mat-form-field>
+  </mat-grid-tile>
+  
+  <mat-grid-tile>
+      <mat-form-field>
+          <mat-select placeholder="Conc Type" [(value)]="Con_type">
+              <mat-option *ngFor="let conc_type of conc_types" [value]="conc_type.value">
+                  {{ conc_type.viewValue }}
+                </mat-option>
+          </mat-select>
+          </mat-form-field>
+  </mat-grid-tile>
+  
+  <mat-grid-tile>
+     <mat-form-field>
+        <mat-select placeholder="Nature of Handicap" [(value)]="h_nature">
+            <mat-option *ngFor="let h_n of handicap_nature" [value]="h_n.value">
+                {{ h_n.viewValue }}
+              </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-grid-tile>
+   
+  <mat-grid-tile>
+      <mat-form-field>
+          <input matInput placeholder="Name of Doctor / Head of Institution" [(ngModel)]="doc_name">
+          </mat-form-field>
+  </mat-grid-tile>
+     
+  <mat-grid-tile>
+      <mat-form-field>
+          <input matInput placeholder="Dr Registration Number" [(ngModel)]="reg_no">
+          </mat-form-field>
+  </mat-grid-tile>
+  
+  <mat-grid-tile>
+      <mat-form-field>
+          <input matInput placeholder="Hospital / Clinic" [(ngModel)]="hospital">
+          </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile>
+
+  </mat-grid-tile>
+  <mat-grid-tile>
+  </mat-grid-tile>
+</mat-grid-list>
+</div>
+
+<!--
+<h4>Zone = {{zonelist_val}},Issuing station :{{issuingstation_val}}, Card Serial No : {{cards_no_val}}</h4>
+<h4>Valid from year = {{year}}, Valid to Year = {{ year2 }}  </h4>
+<h4>Concession card holder first name = {{CC_First_name}} <br> Gender : {{CC_gender}}  ,Date of Birth: {{CC_dob_val}}</h4>
+<h4>Age = {{CC_age}}  Nationality={{cc_nationality}}   Aadhar={{cc_aadhar}}  card_type={{selected}}</h4>
+<h4>Journalist Spouse Name = {{JS_spouse_name}} Gender = {{JS_gender}}  DOB = {{JS_Spouse_dob}} </h4>
+<h4>Aadhar = {{JS_aadhar}} Agency ={{JS_agency}}  Issuing Authority= {{JS_issuing_auth}} Designation = {{JS_issuing_station}}</h4>
+
+<h4> Handicap Name = {{h_name}}  Gender ={{H_gender}}  Certificate Number = {{H_certi_number}}</h4>
+<h4>Address = {{H_address}} Concession Type = {{Con_type}} Nature of Handicap = {{h_nature}} Name of Doctor = {{doc_name}}</h4>
+<h4> Registration Number = {{reg_no}}  Hospital = {{hospital}}</h4>
+
+-->
+
+
+<br>
+
+<div class="buttons" align="center">
+<mat-action-row>
+ <!-- <button mat-button color="warn" (click)="prevStep()">Previous</button>-->
+  <button mat-button color="primary" type="submit">Submit</button>
+  <button mat-button color="primary" type="submit">Clear</button>
+</mat-action-row>
+</div>
+
+<div></div>
+

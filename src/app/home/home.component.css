@@ -1,0 +1,9 @@
+.center{
+  size: 35ch;
+  text-align: center;
+  white-space: normal;
+}
+.button-row button,
+.button-row a {
+  margin-right: 8px;
+}

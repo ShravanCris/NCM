@@ -1,0 +1,9 @@
+mat-grid-list{
+    align-self: center;
+    align-content:"center"
+}
+mat-grid-tile {
+    background: lightskyblue;
+    size: 30px;
+  }/** No CSS for this example */
+  
