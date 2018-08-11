@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 import { toDate } from '@angular/common/src/i18n/format_date';
+import { AdddeleteService } from '../adddelete.service';
+import { Concession } from '../models/concession.model';
 declare var require: any;
 var ageCalculator = require('age-calculator');
 let { AgeFromDateString,AgeFromDate } = require('age-calculator'); 
@@ -22,7 +24,8 @@ export class ConcCardComponent implements OnInit {
   CC_age: Number;
   month:Number;
   today_date: String;
-constructor(){
+  concession= new Concession;
+constructor(private adddeleteService:AdddeleteService){
     this.CC_age=0;
     this.CC_dob_val='';
     this.JS_Spouse_dob='';
@@ -142,5 +145,38 @@ constructor(){
           console.log(this.JS_Spouse_dob);
           
         }
+        newConcession(card_S_No,zonelist_val,issuingstation_val,year,year2,CC_First_name,CC_gender,CC_dob_val,CC_age,cc_nationality,cc_aadhar,selected,JS_spouse_name,JS_gender,JS_Spouse_dob,JS_aadhar,JS_agency,JS_issuing_auth,JS_designation,h_name,H_gender,H_certi_number,H_address,Con_type,h_nature,doc_name,reg_no,hospital){
+          this.concession.card_S_no= card_S_No;
+          this.concession.issuingZone=zonelist_val.toString();
+          this.concession.issuingStation=issuingstation_val.toString();
+          this.concession.validfrom=year;
+          this.concession.validtill=year2;
+          this.concession.firstname=CC_First_name;
+          this.concession.gender=CC_gender;
+          this.concession.cc_DOB=CC_dob_val;
+          this.concession.cc_Age=CC_age;
+          this.concession.nationality=cc_nationality;
+          this.concession.aadhar=cc_aadhar;
+          this.concession.card_type=selected;
+          this.concession.js_Spouse_name=JS_spouse_name;
+          this.concession.js_gender=JS_gender;
+          this.concession.js_DOB=JS_Spouse_dob;
+          this.concession.js_Aadhar=JS_aadhar;
+          this.concession.js_agency=JS_agency;
+          this.concession.js_issuing_auth=JS_issuing_auth;
+          this.concession.js_Designation=JS_designation;
+          this.concession.h_name=h_name;
+          this.concession.h_gender=H_gender;
+          this.concession.h_certi_number=H_certi_number;
+          this.concession.h_address=H_address;
+          this.concession.conc_type=Con_type;
+          this.concession.nature_of_handicap=h_nature;
+          this.concession.doc_name=doc_name;
+          this.concession.reg_no=reg_no;
+          this.concession.hospital=hospital;
 
+
+          console.log("We are near posting " + this.concession.issuingStation);
+          this.adddeleteService.create(this.concession);
+        }
 }

@@ -3,7 +3,7 @@
 <mat-grid-list cols="5" rowHeight="2:1">
   <mat-grid-tile>
     <mat-form-field>
-        <mat-select placeholder="Issuing Zone" [(value)]="zonelist_val">
+        <mat-select placeholder="Issuing Zone" [(value)]="zonelist_val" >
             <mat-option *ngFor="let zone of zoneList" item-width="30" [value]="zone.value">
               {{ zone.viewValue }}
             </mat-option>
@@ -17,7 +17,7 @@
   </mat-grid-tile>
   <mat-grid-tile>
     <mat-form-field>
-      <input matInput placeholder="Card Serial No" [(ngModel)]="cards_no_val">
+      <input matInput placeholder="Card Serial No" [(ngModel)]="card_S_No">
     </mat-form-field>
  </mat-grid-tile>
   <mat-grid-tile>
@@ -156,7 +156,7 @@
  
 <mat-grid-tile>
     <mat-form-field>
-        <input matInput placeholder="Designation" [(ngModel)]="JS_issuing_station">
+        <input matInput placeholder="Designation" [(ngModel)]="JS_designation">
         </mat-form-field>
 </mat-grid-tile>
 </mat-grid-list>
@@ -248,12 +248,12 @@
 </div>
 
 <!--
-<h4>Zone = {{zonelist_val}},Issuing station :{{issuingstation_val}}, Card Serial No : {{cards_no_val}}</h4>
+<h4>Zone = {{zonelist_val}},Issuing station :{{issuingstation_val}}, Card Serial No : {{card_S_No}}</h4>
 <h4>Valid from year = {{year}}, Valid to Year = {{ year2 }}  </h4>
 <h4>Concession card holder first name = {{CC_First_name}} <br> Gender : {{CC_gender}}  ,Date of Birth: {{CC_dob_val}}</h4>
 <h4>Age = {{CC_age}}  Nationality={{cc_nationality}}   Aadhar={{cc_aadhar}}  card_type={{selected}}</h4>
 <h4>Journalist Spouse Name = {{JS_spouse_name}} Gender = {{JS_gender}}  DOB = {{JS_Spouse_dob}} </h4>
-<h4>Aadhar = {{JS_aadhar}} Agency ={{JS_agency}}  Issuing Authority= {{JS_issuing_auth}} Designation = {{JS_issuing_station}}</h4>
+<h4>Aadhar = {{JS_aadhar}} Agency ={{JS_agency}}  Issuing Authority= {{JS_issuing_auth}} Designation = {{JS_designation}}</h4>
 
 <h4> Handicap Name = {{h_name}}  Gender ={{H_gender}}  Certificate Number = {{H_certi_number}}</h4>
 <h4>Address = {{H_address}} Concession Type = {{Con_type}} Nature of Handicap = {{h_nature}} Name of Doctor = {{doc_name}}</h4>
@@ -262,12 +262,14 @@
 -->
 
 
+
+
 <br>
 
 <div class="buttons" align="center">
 <mat-action-row>
  <!-- <button mat-button color="warn" (click)="prevStep()">Previous</button>-->
-  <button mat-button color="primary" type="submit">Submit</button>
+  <button mat-button color="primary" type="submit" (click)="newConcession(card_S_No,zonelist_val,issuingstation_val,year,year2,CC_First_name,CC_gender,CC_dob_val,CC_age,cc_nationality,cc_aadhar,selected,JS_spouse_name,JS_gender,JS_Spouse_dob,JS_aadhar,JS_agency,JS_issuing_auth,JS_designation,h_name,H_gender,H_certi_number,H_address,Con_type,h_nature,doc_name,reg_no,hospital)">Submit</button>
   <button mat-button color="primary" type="submit">Clear</button>
 </mat-action-row>
 </div>

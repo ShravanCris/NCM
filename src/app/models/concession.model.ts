@@ -1,0 +1,31 @@
+export class Concession{
+    issuingZone: String;
+    issuingStation: String;
+    card_S_no:Number;
+    validtill:Date ;
+    reg_no:String ;
+    hospital:String ;
+    validfrom:Date ;
+    js_Spouse_name:String ;
+    js_issuing_auth:String ;
+    nature_of_handicap:String ;
+    js_Designation: String;
+    h_certi_number: String;
+    js_issuing_station:String ;
+    h_name:String ;
+    gender: String;
+    nationality: String;
+    cc_Age:Number ;
+    firstname: String;
+    card_type:String ;
+    js_agency:String;
+    js_DOB: Date;
+    js_gender: String;
+    aadhar: Number;
+    conc_type: String;
+    doc_name: String;
+    h_address: String;
+    js_Aadhar: String;
+    cc_DOB: Date;
+    h_gender:String; 
+}
