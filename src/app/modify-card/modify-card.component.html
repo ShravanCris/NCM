@@ -1,276 +1,108 @@
 <h1 align="center">Modify Concession Card</h1>
-
-<mat-grid-list cols="5" rowHeight="2:1">
-  <mat-grid-tile>
-    <mat-form-field>
-        <mat-select placeholder="Issuing Zone" [(value)]="zonelist_val">
-            <mat-option *ngFor="let zone of zoneList" item-width="30" [value]="zone.value">
-              {{ zone.viewValue }}
-            </mat-option>
-          </mat-select>
-    </mat-form-field>
-  </mat-grid-tile>
-  <mat-grid-tile>
-    <mat-form-field>
-      <input matInput placeholder="Issuing Station"  [(ngModel)]="issuingstation_val">
-    </mat-form-field>
-  </mat-grid-tile>
-  <mat-grid-tile>
-    <mat-form-field>
-      <input matInput placeholder="Card Serial No" [(ngModel)]="cards_no_val">
-    </mat-form-field>
- </mat-grid-tile>
-  <mat-grid-tile>
-    <mat-form-field>
-      <input matInput [matDatepicker]="picker1" placeholder="Valid From" (dateChange)="addEvent($event)" [readonly]="true">
-      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-      <mat-datepicker #picker1></mat-datepicker>
-    </mat-form-field>
-  </mat-grid-tile>
-  <mat-grid-tile>
-    <mat-form-field>
-      <input matInput [matDatepicker]="picker2" placeholder="Valid Till" (dateChange)="addEvent2($event)" [readonly]="true">
-      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-      <mat-datepicker #picker2></mat-datepicker>
-    </mat-form-field>
-      
-     
-  </mat-grid-tile>
+<div class="button-row" align="center">
   
-
-</mat-grid-list>
-
- <h1 align="center"> Concession Card Holder Detail</h1>
-<mat-grid-list cols="7" rowHeight="2:1">
-  <mat-grid-tile>
-     <mat-form-field>
-      <input matInput placeholder="First name" [(ngModel)]="CC_First_name" maxlength="25">
+  <mat-form-field class="example-full-width">
+  <textarea matInput placeholder=" CARD SERIAL NO " [(ngModel)]="v_card_S_No"></textarea>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <textarea matInput placeholder=" ZONE " [(ngModel)]="issuingZone"></textarea>
     </mat-form-field>
-  </mat-grid-tile>
-  <mat-grid-tile>
-    <mat-form-field>
-  <mat-select placeholder="Gender" [(value)]="CC_gender">
-    <mat-option *ngFor="let gender of genders" [value]="gender.value">
-      {{ gender.viewValue }}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
-  </mat-grid-tile>
-  <mat-grid-tile>
-    <mat-form-field>
-
-        <input matInput [matDatepicker]="picker" placeholder="Date of Birth" (dateChange)="addEvent3($event)">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-
-    </mat-form-field>
-    
- </mat-grid-tile>
-  <mat-grid-tile>
-    <mat-form-field>
-      <input matInput placeholder="Age" [(value)]="CC_age">
-    </mat-form-field>
-
-  </mat-grid-tile>
-  <mat-grid-tile>
-<mat-form-field>
-  <mat-select placeholder="Nationality" [(value)]="cc_nationality">
-    <mat-option *ngFor="let nationality of nationalities" [value]="nationality.value">
-      {{ nationality.viewValue }}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
-
-  </mat-grid-tile>
-  <mat-grid-tile>
-<mat-form-field>
-      <input matInput placeholder="Aadhar" [(ngModel)]="cc_aadhar" maxlength="12">
-    </mat-form-field>
-
-  </mat-grid-tile>
-
-  <mat-grid-tile>
-    <mat-form-field>
-  <mat-select placeholder="Card Type"  [(value)]="selected">
-    <mat-option *ngFor="let cardtype of cardtypes" [value]="cardtype.value">
-      {{ cardtype.viewValue }}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
-  </mat-grid-tile>
-</mat-grid-list> 
-<br>
-<div *ngIf="(selected=='Journalist')">
-    <h1 align="center">Journalist Spouse Details</h1>
-<mat-grid-list cols=4 rowHeight="4:1">
-  <mat-grid-tile>
+    <mat-form-field class="example-full-width">
+      <textarea matInput placeholder=" ISSUING STATION " [(ngModel)]="issuingStation"></textarea>
+      </mat-form-field>
       <mat-form-field>
-          <mat-select placeholder="Father/Companion">
-            <mat-option *ngFor="let companion of companions" [value]="companion.value">
-                {{ companion.viewValue }}
-              </mat-option>
-          </mat-select>
-          </mat-form-field>
-  </mat-grid-tile>
-
-<mat-grid-tile>
-    <mat-form-field>
-        <input matInput placeholder="Name" [(ngModel)]="JS_spouse_name" >
-        </mat-form-field>
-</mat-grid-tile>
-
-<mat-grid-tile>
-    <mat-form-field>
-        <mat-select placeholder="Gender" [(value)]="JS_gender">
-          <mat-option *ngFor="let gender of genders" [value]="gender.value">
-            {{ gender.viewValue }}
+        <mat-select placeholder="Card Type"  [(value)]="selected">
+          <mat-option *ngFor="let cardtype of cardtypes" [value]="cardtype.value">
+            {{ cardtype.viewValue }}
           </mat-option>
         </mat-select>
-        </mat-form-field>
-</mat-grid-tile>
-  <mat-grid-tile>
-      <mat-form-field>
-          <input matInput [matDatepicker]="picker3" placeholder="Date Of Birth" (dateChange)="addEvent4($event)">
-          <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
-          <mat-datepicker #picker3></mat-datepicker>
-        </mat-form-field>
-  </mat-grid-tile>
-
-  <mat-grid-tile>
-      <mat-form-field>
-          <input matInput placeholder="Aadhar" [(ngModel)]="JS_aadhar">
-          </mat-form-field>
-  </mat-grid-tile>
-
-<mat-grid-tile>
-    <mat-form-field>
-        <input matInput placeholder="Agency" [(ngModel)]="JS_agency">
-        </mat-form-field>
-</mat-grid-tile>
-
-<mat-grid-tile>
-    <mat-form-field>
-        <input matInput placeholder="Issuing Authority" [(ngModel)]="JS_issuing_auth">
-        </mat-form-field>
-</mat-grid-tile>
- 
-<mat-grid-tile>
-    <mat-form-field>
-        <input matInput placeholder="Designation" [(ngModel)]="JS_issuing_station">
-        </mat-form-field>
-</mat-grid-tile>
-</mat-grid-list>
+      </mat-form-field> 
+  <button mat-raised-button color="primary" (click)=(findCard(v_card_S_No))>Submit</button>
 </div>
-<div *ngIf="(selected=='Handicap')">
-<h1 align="center">Handicap Details</h1>
-<mat-grid-list cols=4 rowHeight="4:1">
-  <mat-grid-tile>
-      <mat-form-field>
-          <mat-select placeholder="Father/Companion">
-            <mat-option *ngFor="let companion of companions" [value]="companion.value">
-              {{ companion.viewValue }}
-            </mat-option>
-          </mat-select>
-          </mat-form-field>
-  </mat-grid-tile>
-  
-  <mat-grid-tile>
-    <mat-form-field>
-      <input matInput placeholder="Name" [(ngModel)]="h_name">
-      </mat-form-field>
-    </mat-grid-tile>
-  
-  <mat-grid-tile>
-      <mat-form-field>
-          <mat-select placeholder="Gender" [(value)]="H_gender">
-              <mat-option *ngFor="let gender of genders" [value]="gender.value" >
-                  {{ gender.viewValue }}
-                </mat-option>
-          </mat-select>
-          </mat-form-field>
-        </mat-grid-tile>
-  
-  <mat-grid-tile>
-      <mat-form-field>
-          <input matInput placeholder="Certificate Number" [(ngModel)]="H_certi_number">
-          </mat-form-field>
-  </mat-grid-tile>
-  
-  <mat-grid-tile>
-      <mat-form-field>
-          <input matInput placeholder="Address" maxlength="200" [(ngModel)]="H_address">
-          </mat-form-field>
-  </mat-grid-tile>
-  
-  <mat-grid-tile>
-      <mat-form-field>
-          <mat-select placeholder="Conc Type" [(value)]="Con_type">
-              <mat-option *ngFor="let conc_type of conc_types" [value]="conc_type.value">
-                  {{ conc_type.viewValue }}
-                </mat-option>
-          </mat-select>
-          </mat-form-field>
-  </mat-grid-tile>
-  
-  <mat-grid-tile>
-     <mat-form-field>
-        <mat-select placeholder="Nature of Handicap" [(value)]="h_nature">
-            <mat-option *ngFor="let h_n of handicap_nature" [value]="h_n.value">
-                {{ h_n.viewValue }}
-              </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </mat-grid-tile>
-   
-  <mat-grid-tile>
-      <mat-form-field>
-          <input matInput placeholder="Name of Doctor / Head of Institution" [(ngModel)]="doc_name">
-          </mat-form-field>
-  </mat-grid-tile>
+
+<div *ngIf="concession">
+   <div *ngIf="selected=='Handicap'">
+    <div><label> Card Serial No : </label> <div contentEditable="true">{{concession.card_S_no}}</div></div>
+    <div><label> Issuing Zone : </label><div contentEditable="true">{{concession.issuingZone}}</div></div>
+    <div><label> Isuing Station : </label><div contentEditable="true">{{concession.issuingStation}}</div></div>
+    <div><label> Valid From : </label><div contentEditable="true">{{concession.validfrom}}</div></div>
+    <div><label> Valid Till : </label><div contentEditable="true">{{concession.validtill}}</div></div>
+    <div><label> First Name :  </label><div contentEditable="true">{{concession.firstname}}</div></div>
+    <div><label> Gender :  </label><div contentEditable="true">{{concession.gender}}</div></div>
+    <div><label> DOB : </label><div contentEditable="false">{{concession.cc_DOB}}</div></div>
+    <div><label> AGE :  </label><div contentEditable="false">{{concession.cc_Age}}</div></div>
+    <div><label> NATIONALITY :  </label><div contentEditable="true">{{concession.nationality}}</div></div>
+    <div><label> AADHAR :  </label><div contentEditable="true">{{concession.aadhar}}</div></div>
+    <div><label> Card Type: </label><div contentEditable="true">{{concession.card_type}}</div></div>
+    <div><label>  HANDICAP NAME : </label><div contentEditable="true">{{concession.h_name}}</div></div>
+    <div><label>  HANDICAP GENDER : </label><div contentEditable="true">{{concession.h_gender}}</div></div>
+    <div><label> HANDICAP CERTIFICATE NUMBER : </label><div contentEditable="true">{{concession.h_certi_number}}</div></div>
+    <div><label> HANDICAP ADDRESS : </label><div contentEditable="true">{{concession.h_address}}</div></div>
+    <div><label> CONCESSION TYPE : </label><div contentEditable="true">{{concession.conc_type}}</div></div>
+    <div><label> NATURE OF HANDICAP : </label><div contentEditable="true">{{concession.nature_of_handicap}}</div></div>
+    <div><label> DOCTOR NAME : </label><div contentEditable="true">{{concession.doc_name}}</div></div>
+    <div><label> REGISTRATION NO : </label><div contentEditable="true">{{concession.reg_no}}</div></div>
+    <div><label> HOSPITAL : </label><div contentEditable="true">{{concession.hospital}}</div></div>
+    
+    <div><label> JOURNALIST SPOUSE Name : </label><div contentEditable="true">{{concession.js_Spouse_name}}</div></div>
+    <div><label> JOURNALIST GENDER : </label><div contentEditable="true">{{concession.js_gender}}</div></div>
+    <div><label> JOURNALIST DOB : </label><div contentEditable="true">{{concession.js_DOB}}</div></div>
+    <div><label> JOURNALIST AADHAR : </label><div contentEditable="true">{{concession.js_Aadhar}}</div></div>
+    <div><label> AGENCY : </label><div contentEditable="true">{{concession.js_agency}}</div></div>
+    <div><label> ISSUING AUTHORITY :</label><div contentEditable="true">{{concession.js_issuing_auth}}</div></div>
+    <div><label> JOURNALIST DESIGNATION :</label><div contentEditable="true">{{concession.js_Designation}}</div></div>
+    
+    <div class="buttons" align="center">
+      <mat-action-row>
+       <!-- <button mat-button color="warn" (click)="prevStep()">Previous</button>-->
+        <button mat-button color="primary" type="submit" (click)="newConcession(card_S_No,zonelist_val,issuingstation_val,year,year2,CC_First_name,CC_gender,CC_dob_val,CC_age,cc_nationality,cc_aadhar,selected,JS_spouse_name,JS_gender,JS_Spouse_dob,JS_aadhar,JS_agency,JS_issuing_auth,JS_designation,h_name,H_gender,H_certi_number,H_address,Con_type,h_nature,doc_name,reg_no,hospital)">Submit</button>
+        <button mat-button color="primary" type="submit" (onclick)="location.reload()">Clear</button>
+      </mat-action-row>
+      </div>
+    
+  </div>
+ </div>
+
+ <div *ngIf="concession">
+    <div *ngIf="selected=='Journalist'">
+     <div><label> Card Serial No : </label> <div contentEditable="false">{{concession.card_S_no}}</div></div>
+     <div><label> Issuing Zone : </label><div contentEditable="false">{{concession.issuingZone}}</div></div>
+     <div><label> Isuing Station : </label><div contentEditable="false">{{concession.issuingStation}}</div></div>
+     <div><label> Valid From : </label><div contentEditable="false">{{concession.validfrom}}</div></div>
+     <div><label> Valid Till : </label><div contentEditable="false">{{concession.validtill}}</div></div>
+     <div><label> First Name :  </label><div contentEditable="false">{{concession.firstname}}</div></div>
+     <div><label> Gender :  </label><div contentEditable="false">{{concession.gender}}</div></div>
+     <div><label> DOB : </label><div contentEditable="true">{{concession.cc_DOB}}</div></div>
+     <div><label> AGE :  </label><div contentEditable="true">{{concession.cc_Age}}</div></div>
+     <div><label> NATIONALITY :  </label><div contentEditable="false">{{concession.nationality}}</div></div>
+     <div><label> AADHAR :  </label><div contentEditable="false">{{concession.aadhar}}</div></div>
+     <div><label> Card Type: </label><div contentEditable="false">{{concession.card_type}}</div></div>
+     <div><label>  HANDICAP NAME : </label><div contentEditable="false">{{concession.h_name}}</div></div>
+     <div><label>  HANDICAP GENDER : </label><div contentEditable="false">{{concession.h_gender}}</div></div>
+     <div><label> HANDICAP CERTIFICATE NUMBER : </label><div contentEditable="false">{{concession.h_certi_number}}</div></div>
+     <div><label> HANDICAP ADDRESS : </label><div contentEditable="false">{{concession.h_address}}</div></div>
+     <div><label> CONCESSION TYPE : </label><div contentEditable="false">{{concession.conc_type}}</div></div>
+     <div><label> NATURE OF HANDICAP : </label><div contentEditable="false">{{concession.nature_of_handicap}}</div></div>
+     <div><label> DOCTOR NAME : </label><div contentEditable="false">{{concession.doc_name}}</div></div>
+     <div><label> REGISTRATION NO : </label><div contentEditable="false">{{concession.reg_no}}</div></div>
+     <div><label> HOSPITAL : </label><div contentEditable="false">{{concession.hospital}}</div></div>
      
-  <mat-grid-tile>
-      <mat-form-field>
-          <input matInput placeholder="Dr Registration Number" [(ngModel)]="reg_no">
-          </mat-form-field>
-  </mat-grid-tile>
-  
-  <mat-grid-tile>
-      <mat-form-field>
-          <input matInput placeholder="Hospital / Clinic" [(ngModel)]="hospital">
-          </mat-form-field>
-  </mat-grid-tile>
-  <mat-grid-tile>
-
-  </mat-grid-tile>
-  <mat-grid-tile>
-  </mat-grid-tile>
-</mat-grid-list>
-</div>
-
-<!--
-<h4>Zone = {{zonelist_val}},Issuing station :{{issuingstation_val}}, Card Serial No : {{cards_no_val}}</h4>
-<h4>Valid from year = {{year}}, Valid to Year = {{ year2 }}  </h4>
-<h4>Concession card holder first name = {{CC_First_name}} <br> Gender : {{CC_gender}}  ,Date of Birth: {{CC_dob_val}}</h4>
-<h4>Age = {{CC_age}}  Nationality={{cc_nationality}}   Aadhar={{cc_aadhar}}  card_type={{selected}}</h4>
-<h4>Journalist Spouse Name = {{JS_spouse_name}} Gender = {{JS_gender}}  DOB = {{JS_Spouse_dob}} </h4>
-<h4>Aadhar = {{JS_aadhar}} Agency ={{JS_agency}}  Issuing Authority= {{JS_issuing_auth}} Designation = {{JS_issuing_station}}</h4>
-
-<h4> Handicap Name = {{h_name}}  Gender ={{H_gender}}  Certificate Number = {{H_certi_number}}</h4>
-<h4>Address = {{H_address}} Concession Type = {{Con_type}} Nature of Handicap = {{h_nature}} Name of Doctor = {{doc_name}}</h4>
-<h4> Registration Number = {{reg_no}}  Hospital = {{hospital}}</h4>
-
--->
+     <div><label> JOURNALIST SPOUSE Name : </label><div contentEditable="false">{{concession.js_Spouse_name}}</div></div>
+     <div><label> JOURNALIST GENDER : </label><div contentEditable="false">{{concession.js_gender}}</div></div>
+     <div><label> JOURNALIST DOB : </label><div contentEditable="false">{{concession.js_DOB}}</div></div>
+     <div><label> JOURNALIST AADHAR : </label><div contentEditable="false">{{concession.js_Aadhar}}</div></div>
+     <div><label> AGENCY : </label><div contentEditable="false">{{concession.js_agency}}</div></div>
+     <div><label> ISSUING AUTHORITY :</label><div contentEditable="false">{{concession.js_issuing_auth}}</div></div>
+     <div><label> JOURNALIST DESIGNATION :</label><div contentEditable="false">{{concession.js_Designation}}</div></div>
+   
+     <div class="buttons" align="center">
+      <mat-action-row>
+       <!-- <button mat-button color="warn" (click)="prevStep()">Previous</button>-->
+        <button mat-button color="primary" type="submit" (click)="modConcession(concession.cc_DOB,concession.cc_Age)">Submit</button>
+        <button mat-button color="primary" type="submit" (onclick)="location.reload()">Clear</button>
+      </mat-action-row>
+      </div>
+    </div>
 
 
-<br>
-
-<div class="buttons" align="center">
-<mat-action-row>
- <!-- <button mat-button color="warn" (click)="prevStep()">Previous</button>-->
-  <button mat-button color="primary" type="submit">Submit</button>
-  <button mat-button color="primary" type="submit">Clear</button>
-</mat-action-row>
-</div>
-
-<div></div>
-
+  </div>

@@ -161,7 +161,7 @@
 </mat-grid-tile>
 </mat-grid-list>
 </div>
-<div *ngIf="(selected=='Handicap')">
+<div *ngIf="selected=='Handicap'">
 <h1 align="center">Handicap Details</h1>
 <mat-grid-list cols=4 rowHeight="4:1">
   <mat-grid-tile>
@@ -270,7 +270,7 @@
 <mat-action-row>
  <!-- <button mat-button color="warn" (click)="prevStep()">Previous</button>-->
   <button mat-button color="primary" type="submit" (click)="newConcession(card_S_No,zonelist_val,issuingstation_val,year,year2,CC_First_name,CC_gender,CC_dob_val,CC_age,cc_nationality,cc_aadhar,selected,JS_spouse_name,JS_gender,JS_Spouse_dob,JS_aadhar,JS_agency,JS_issuing_auth,JS_designation,h_name,H_gender,H_certi_number,H_address,Con_type,h_nature,doc_name,reg_no,hospital)">Submit</button>
-  <button mat-button color="primary" type="submit">Clear</button>
+  <button mat-button color="primary" type="submit" (onclick)="location.reload()">Clear</button>
 </mat-action-row>
 </div>
 

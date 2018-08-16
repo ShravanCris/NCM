@@ -8,11 +8,43 @@
   <div class="button-row">
   
     <mat-form-field class="example-full-width">
-    <textarea matInput placeholder="Enter the card number to be viewed "></textarea>
+    <textarea matInput placeholder="Enter CARD SERIAL NO " [(ngModel)]="v_card_S_No"></textarea>
     </mat-form-field>
-    <button mat-raised-button color="primary">Submit</button>
-    <!--<button mat-raised-button color="primary">Concession Card</button>
-    -->
+    <button mat-raised-button color="primary" (click)="viewCard(v_card_S_No)">Submit</button>
+    
   
+  </div>
+  <div *ngIf="concession">
+      <div><label> Card Serial No : </label>{{concession.card_S_no}}</div>
+      <div><label> Issuing Zone : </label>{{concession.issuingZone}}</div>
+      <div><label> Isuing Station : </label>{{concession.issuingStation}}</div>
+      <div><label> Valid From : </label>{{concession.validfrom}}</div>
+      <div><label> Valid Till : </label>{{concession.validtill}}</div>
+      <div><label> First Name :  </label>{{concession.firstname}}</div>
+<div><label> Gender :  </label>{{concession.gender}}</div>
+<div><label> DOB : </label>{{concession.cc_DOB}}</div>
+<div><label> AGE :  </label>{{concession.cc_Age}}</div>
+<div><label> NATIONALITY :  </label>{{concession.nationality}}</div>
+<div><label> AADHAR :  </label>{{concession.aadhar}}</div>
+<div><label> Card Type: </label>{{concession.card_type}}</div>
+<div><label>  HANDICAP NAME : </label>{{concession.h_name}}</div>
+<div><label>  HANDICAP GENDER : </label>{{concession.h_gender}}</div>
+<div><label> HANDICAP CERTIFICATE NUMBER : </label>{{concession.h_certi_number}}</div>
+<div><label> HANDICAP ADDRESS : </label>{{concession.h_address}}</div>
+<div><label> CONCESSION TYPE : </label>{{concession.conc_type}}</div>
+<div><label> NATURE OF HANDICAP : </label>{{concession.nature_of_handicap}}</div>
+<div><label> DOCTOR NAME : </label>{{concession.doc_name}}</div>
+<div><label> REGISTRATION NO : </label>{{concession.reg_no}}</div>
+<div><label> HOSPITAL : </label>{{concession.hospital}}</div>
+
+<div><label> JOURNALIST SPOUSE Name : </label>{{concession.js_Spouse_name}}</div>
+<div><label> JOURNALIST GENDER : </label>{{concession.js_gender}}</div>
+<div><label> JOURNALIST DOB : </label>{{concession.js_DOB}}</div>
+<div><label> JOURNALIST AADHAR : </label>{{concession.js_Aadhar}}</div>
+<div><label> AGENCY : </label>{{concession.js_agency}}</div>
+<div><label> ISSUING AUTHORITY :</label>{{concession.js_issuing_auth}}</div>
+<div><label> JOURNALIST DESIGNATION :</label>{{concession.js_Designation}}</div>
+
+
   </div>
   </div>

@@ -176,7 +176,8 @@ constructor(private adddeleteService:AdddeleteService){
           this.concession.hospital=hospital;
 
 
-          console.log("We are near posting " + this.concession.issuingStation);
+          //console.log("We are near posting " + this.concession.issuingStation);
           this.adddeleteService.create(this.concession);
+          alert("Card saved successfully");
         }
 }

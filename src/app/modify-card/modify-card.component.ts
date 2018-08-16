@@ -4,7 +4,8 @@ import { toDate } from '@angular/common/src/i18n/format_date';
 declare var require: any;
 var ageCalculator = require('age-calculator');
 let { AgeFromDateString,AgeFromDate } = require('age-calculator'); 
-
+import { AdddeleteService } from '../adddelete.service';
+import { Concession } from '../models/concession.model';
 
 
 @Component({
@@ -13,7 +14,9 @@ let { AgeFromDateString,AgeFromDate } = require('age-calculator');
   styleUrls: ['./modify-card.component.css']
 })
 export class ModifyCardComponent implements OnInit {
-
+  concession=new Concession;
+  v_cc_Age:Number;
+  v_cc_DOB:Date;
   date :Date;
   year : String;
   year2: String;
@@ -24,7 +27,7 @@ export class ModifyCardComponent implements OnInit {
   CC_age: Number;
   month:Number;
   today_date: String;
-constructor(){
+constructor(private adddeleteService:AdddeleteService){
     this.CC_age=0;
     this.CC_dob_val='';
     this.JS_Spouse_dob='';
@@ -145,5 +148,19 @@ constructor(){
           
         }
 
+        findCard(v_card_S_No){
+          this.adddeleteService.findbyCard_S_no(v_card_S_No).then(concession => this.concession= concession);
+        }
+
+        modConcession(cc_Age,cc_DOB)
+        {
+          this.v_cc_DOB=cc_DOB;
+          this.v_cc_Age=cc_Age;
+          this.concession.cc_DOB=this.v_cc_DOB;
+          this.concession.cc_Age=this.v_cc_Age;
+          console.log("reached mod Concession");
+          this.adddeleteService.updateConcession(this.concession);
+          alert("card modified successfully");
+        }
 
 }
